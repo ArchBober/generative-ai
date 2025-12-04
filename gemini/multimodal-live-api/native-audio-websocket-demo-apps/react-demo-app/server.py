@@ -5,6 +5,7 @@ Handles authentication and proxies WebSocket connections.
 
 This server acts as a bridge between the browser client and Gemini API,
 handling Google Cloud authentication automatically using default credentials.
+DOCS: https://docs.cloud.google.com/vertex-ai/generative-ai/docs/live-api/web-app-tutorial
 """
 
 import asyncio
