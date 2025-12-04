@@ -31,7 +31,6 @@ def generate_access_token():
         credentials = service_account.Credentials.from_service_account_file(
             "secret.json", scopes=("https://www.googleapis.com/auth/cloud-platform",)
         )
-        os.environ["API_KEY"] = "YOUR_ACTUAL_GEMINI_API_KEY"
         
         if not credentials.valid or credentials.expired:
             # `Request()` knows how to talk to https://oauth2.googleapis.com/token
