@@ -21,6 +21,7 @@ from websockets.exceptions import ConnectionClosed
 # Google auth imports
 import google.auth
 from google.auth.transport.requests import Request
+from google.oauth2 import service_account
 
 DEBUG = False  # Set to True for verbose logging
 WS_PORT = 8080    # Port for WebSocket server
