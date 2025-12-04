@@ -1,0 +1,11 @@
+[project]
+name = "react-demo-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "certifi>=2025.11.12",
+    "google-auth>=2.43.0",
+    "websockets>=15.0.1",
+]
