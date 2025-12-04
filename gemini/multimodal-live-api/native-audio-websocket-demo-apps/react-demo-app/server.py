@@ -28,10 +28,19 @@ WS_PORT = 8080    # Port for WebSocket server
 def generate_access_token():
     """Retrieves an access token using Google Cloud default credentials."""
     try:
-        creds, _ = google.auth.default()
-        if not creds.valid:
-            creds.refresh(Request())
-        return creds.token
+        credentials = service_account.Credentials.from_service_account_file(
+            "secret.json", scopes=("https://www.googleapis.com/auth/cloud-platform",)
+        )
+        os.environ["API_KEY"] = "YOUR_ACTUAL_GEMINI_API_KEY"
+        
+        if not credentials.valid or credentials.expired:
+            # `Request()` knows how to talk to https://oauth2.googleapis.com/token
+            credentials.refresh(Request())
+        if credentials.token:
+            return credentials.token
+        else:
+            # This should never happen if the refresh succeeded, but we guard anyway.
+            raise RuntimeError("Refresh succeeded but no access token was returned.")
     except Exception as e:
         print(f"Error generating access token: {e}")
         print("Make sure you're logged in with: gcloud auth application-default login")
